@@ -1,0 +1,146 @@
+*{margin: 0px; padding: 0px;}
+ul{list-style: none;} /* 리스트 앞에 . 같은거 제거*/
+a{text-decoration: none;} /* 링크에 밑줄 제거*/
+
+header {
+    background-color: #2d3a4b;
+    color: white;
+    width: 100%;
+    height: 95px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 양 끝에 정렬 */
+    padding: 0 20px; /* 좌우 패딩 추가 */
+    box-sizing: border-box;
+}
+
+#logo {
+	flex-shrink: 0; /* 로고가 줄어들지 않도록 설정 */
+}
+
+#logo img{
+	width: 150px;
+	height: auto;
+}
+
+#top_menu {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	color: white;
+}
+
+#top_menu a{
+	color: white;
+}
+
+nav{
+	position: absolute;
+	bottom: 10px;
+	left: 220px;
+	font-size: 16px;
+}
+
+nav li{
+	display: inline;
+	margin-left: 30px;
+}
+
+nav li a{
+	color: white;
+	}
+	
+/* 전체 페이지가 가운데 오도록 하는 방법 근데 지금은 display를 화면꽉차게 줘서 안씀 */	
+/* #page{width: 820px; margin: 0px auto;} */
+
+/* 밑줄 없애기 text-decoration: none; */
+
+
+.service{
+	background: #ddd;
+}
+
+.service .container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.service .img{
+	height: 300px;
+}
+
+.service .img img{
+	height: 100%;
+	width: auto;
+}
+
+.service .text{
+	text-align: end; /*오른쪽 맞춤 정렬*/
+	color: #444;
+	padding-left: 100px;
+}
+
+.service .text h1{
+	letter-spacing: 0.2em;
+}
+
+.service .text p{
+	word-wrap: break-word;
+	word-break: keep-all;
+	font-size: 12px;
+}
+
+/* 6월 12일 연습 */
+
+#sidebar { 
+    float: left; 
+    width: 200px; 
+    background: #c0c0c0; 
+    padding: 70px 180px 70px 180px; /* 위 오른쪽 아래 왼쪽*/
+}
+
+.search-box {
+	height: 30px;
+	width: 300px;
+	background: pink;
+	border-radius: 40px;
+	padding: 10px;
+	border: 1px solid #f9deec;
+}
+
+.MainSearch {
+    -webkit-text-size-adjust: none;
+    font-weight: 400;
+    font-family: "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", 돋움, dotum, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+.inp {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 검색버튼 위에 마우스 올렸을 때 색상 변경 */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+}
