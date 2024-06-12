@@ -18,11 +18,7 @@ public class TestMySQLConnect_Schema
   Class.forName("com.mysql.cj.jdbc.Driver");
 
   // 자신의 환경에 적합하게 DB 이름 및 사용자/비밀번호를 수정하기 - dsdt는 스키마이름임(not table)
-<<<<<<< HEAD
-  try( Connection con = DriverManager.getConnection( "jdbc:mysql://127.0.0.1:3306/dsdt", "root", "mysql123" ) )
-=======
-  try( Connection con = DriverManager.getConnection( "jdbc:mysql://127.0.0.1:3306/dsdt", "root", "1234" ) )
->>>>>>> dev
+  try( Connection con = DriverManager.getConnection( "jdbc:mysql://127.0.0.1:3306/dsdt", "root", "mysql123" ))
   {
    System.out.println( "Connection success" );
   }
