@@ -47,7 +47,7 @@
 	</div>
 	</section>
 
- 	<div id="board_area">
+ 	<div id="board_area">()
  
       <h2>인기프로젝트목록</h2>
       <table class="list-table">

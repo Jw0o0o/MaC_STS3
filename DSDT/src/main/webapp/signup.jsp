@@ -2,10 +2,12 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="EUC-KR">
-    <title>회원 가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         table {
             margin: 0 auto;
@@ -13,78 +15,109 @@
         .logo {
             text-align: center;
             margin-top: 20px;
+            width: 150px;
+            height: auto;
         }
     </style>
-</head>
+    <script>
+    	// 1. 전화번호 입력시 "-"자동 추가
+        function formatPhoneNumber(input) {
+            const numbers = input.value.replace(/\D/g, '');
+            const phoneNumber = numbers.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+            input.value = phoneNumber;
+        }
+    	// 2. 이용약관 동의 안하면 못 넘어가도록
+    	function toggleSubmitButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            const terms = document.getElementById('terms');
+            submitBtn.disabled = !terms.checked;
+        }
+    	// 3. 중복체크
+    	var isIdAvailable = false;
+    	
+        function checkDuplicateId() {
+            var userId = document.getElementsByName("u_id")[0].value;
+            if(userId === "") {
+                alert("아이디를 입력해주세요.");
+                return;
+            }
 
-<body>
-	<form method="post" action="signup.do" target="_self">
-    	<div class="logo">
-        	<img src="./resources/dsdtLogo.png" alt="사이트 로고" />
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "checkId.do", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    var response = xhr.responseText;
+                    if(response == "available") {
+                        alert("사용 가능한 아이디입니다.");
+                        isIdAvailable = true;
+                    } else {
+                        alert("이미 사용 중인 아이디입니다.");
+                        isIdAvailable = false;
+                    }
+                }
+            };
+            xhr.send("u_id=" + encodeURIComponent(userId));
+        }
+        
+        // 3-2. id중복체크해서, 중복이면 아예 폼 제출X
+        function validateForm(event) {
+            if (!isIdAvailable) {
+                alert("아이디 중복 체크를 통과하지 못했습니다. 다른 아이디를 사용해주세요.");
+                event.preventDefault();
+            } else {
+                combineFields();
+            }
+        }
+    	
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+	<form method="post" action="signup.do" target="_self" onsubmit="validateForm(event)">
+        <div class="logo">
+        	<img src="./resources/images/dsdtLogo2.png" alt="사이트 로고" />
     	</div>
-        <table border="0" width="650">
-            <tr>
-                <th colspan="2">
-                    <h1>회원가입</h1>
-                </th>
-            </tr>
-            <tr>
-                <td>유저 유형</td>
-                <td>
-                    <input type="radio" name="u_role" value="individual" checked> 개인
-                    <input type="radio" name="u_role" value="company"> 기업
-                </td>
-            </tr>
-            <tr>
-                <td>아이디</td>
-                <td>
-                    <input type="text" name="u_id" size="10" max="20">
-                    <input type="button" value="중복확인" name="idconfirm" onclick="checkDuplicateId()">
-                    <!-- <input type="button" value="중복확인" name="idconfirm" onclick=""> -->
-                </td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="u_pw" size="10" max="20"></td>
-            </tr>
-            <tr>
-                <td>비밀번호 확인</td>
-                <td><input type="password" name="u_pwc" size="10" max="20"></td>
-            </tr>
-            <tr>
-                <td width="150">이름</td>
-                <td><input type="text" name="u_nickname" size="10"></td>
-            </tr>
-            <tr>
-                <td>전화번호</td>
-                <td>
-                    <div class="inline-inputs">
-                        <select name="tel_1" size="1">
-                            <option value="02">02</option>
-                            <option value="010" selected>010</option>
-                            <option value="011">011</option>
-                            <option value="016">016</option>
-                            <option value="017">017</option>
-                            <option value="018">018</option>
-                            <option value="019">019</option>
-                        </select>
-                        -
-                        <input type="text" name="tel_2" size="6" max="10">
-                        -
-                        <input type="text" name="tel_3" size="6" max="10">
-                        <!-- Hidden field to store the combined phone number -->
-                        <input type="hidden" name="u_phone">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-            <tr>
-                <th colspan="2">
-                    <input type="submit" value="가입하기"> <input type="reset" value="다시작성">
-                </th>
-            </tr>
-        </table>
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">회원가입</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">가입 유형</label>
+                <div>
+                    <input type="radio" id="u_role_individual" name="u_role" value="individual" checked>
+                    <label for="u_role_individual" class="mr-4">개인</label>
+                    <input type="radio" id="u_role_company" name="u_role" value="company">
+                    <label for="u_role_company">기업</label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="u_id" class="block text-gray-700">아이디</label>
+                <div class="flex">
+                    <input type="text" id="u_id" name="u_id" placeholder="ID를 입력해주세요" class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" name="idconfirm" class="px-4 py-2 bg-blue-500 text-white rounded-r-lg" onclick="checkDuplicateId()">중복체크</button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="u_pw" class="block text-gray-700">비밀번호</label>
+                <input type="password" id="u_pw" name="u_pw" placeholder="비밀번호를 입력해주세요" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="u_pwc" class="block text-gray-700">비밀번호 확인</label>
+                <input type="password" id="u_pwc" name="u_pwc" placeholder="비밀번호를 다시 입력해주세요" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="u_nickname" class="block text-gray-700">이름</label>
+                <input type="text" id="u_nickname" name="u_nickname" placeholder="이름을 입력해주세요" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="u_phone" class="block text-gray-700">전화번호</label>
+                <input type="text" id="u_phone" name="u_phone" placeholder="전화번호를 입력해주세요" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="formatPhoneNumber(this)">
+            </div>
+            <div class="mb-4 flex items-center">
+                <input type="checkbox" id="terms" class="mr-2" onchange="toggleSubmitButton()">
+                <label for="terms" class="text-gray-700 text-sm">회원가입과 동시에 개인정보취급방침 및 이용약관에 동의하게 됩니다.</label>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full bg-green-500 text-white py-2 rounded-lg" disabled>회원가입</button>
+        </div>
     </form>
 </body>
-
 </html>

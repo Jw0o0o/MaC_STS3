@@ -2,13 +2,13 @@
 
 /* 전체 페이지 스타일 */
 body {
-    background-color: #f0f8ff;
+    background-color: #f3f4f6;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* 변경: flex-start로 설정하여 테이블을 수직 상단에 맞춤 */
+    align-items: center;
     height: 100vh;
 }
 

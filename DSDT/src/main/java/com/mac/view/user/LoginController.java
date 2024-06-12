@@ -2,20 +2,24 @@ package com.mac.view.user;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mac.dsdt.user.UserService;
 import com.mac.dsdt.user.UserVO;
 import com.mac.dsdt.user.impl.UserDAO;
 
 @Controller
 public class LoginController {
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/login.do")
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
 		System.out.println("로그인!");
 		
-		UserVO user = userDAO.getUser(vo);
+		UserVO user = userService.getUser(vo);
 		if (user != null) {
 			// session.setAttribute("userName", user.getU_name()); // SetAttribute은 서블릿API중 하나
 			return "main.jsp";
