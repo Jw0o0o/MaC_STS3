@@ -1,6 +1,6 @@
 ### Eclipse ###
-.metadata
-.Servers
+/.metadata
+/.Servers
 bin/
 tmp/
 *.tmp
