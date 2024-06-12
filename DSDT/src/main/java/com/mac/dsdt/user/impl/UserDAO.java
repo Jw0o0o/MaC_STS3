@@ -213,29 +213,4 @@ public class UserDAO {
 
 	}
 	
-	// 7. 유저 중복체크
-	public boolean existsByUsername(UserVO vo) {
-		System.out.println("===> JDBC로 existsByUsername() 기능 처리");
-
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(USER_DETAIL);
-			stmt.setString(1, vo.getU_id());
-			stmt.executeQuery();
-			
-			if (rs.next() && rs.getInt(1) > 0) {
-	            return true; // 아이디가 존재함
-	        } else {
-	            return false; // 아이디가 존재하지 않음
-	        }
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			JDBCUtil.close(stmt, conn);
-		}
-	}
-	
-	
 }

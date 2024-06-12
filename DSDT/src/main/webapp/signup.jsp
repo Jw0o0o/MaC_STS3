@@ -18,6 +18,19 @@
             width: 150px;
             height: auto;
         }
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            display: none;
+        }
+        .disabled-button {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        .enabled-button {
+            background-color: green;
+            cursor: pointer;
+        }
     </style>
     <script>
     	// 1. 전화번호 입력시 "-"자동 추가
@@ -30,7 +43,15 @@
     	function toggleSubmitButton() {
             const submitBtn = document.getElementById('submitBtn');
             const terms = document.getElementById('terms');
-            submitBtn.disabled = !terms.checked;
+            if (terms.checked && isIdAvailable) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('disabled-button');
+                submitBtn.classList.add('enabled-button');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.remove('enabled-button');
+                submitBtn.classList.add('disabled-button');
+            }
         }
     	// 3. 중복체크
     	var isIdAvailable = false;
@@ -56,23 +77,54 @@
                         alert("이미 사용 중인 아이디입니다.");
                         isIdAvailable = false;
                     }
+                    toggleSubmitButton();
                 }
             };
             xhr.send("u_id=" + encodeURIComponent(userId));
         }
         
-        // 3-2. id중복체크해서, 중복이면 아예 폼 제출X
+        // 3-2. id중복체크 & 비번일치 확인해서, 통과 못하면 아예 폼 제출X
         function validateForm(event) {
-            if (!isIdAvailable) {
+        	if (!isIdAvailable) {
                 alert("아이디 중복 체크를 통과하지 못했습니다. 다른 아이디를 사용해주세요.");
                 event.preventDefault();
+                return;
+            }
+        	
+            const password = document.getElementById('u_pw').value;
+            const confirmPassword = document.getElementById('u_pwc').value;
+            const errorMessage = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block';
+                event.preventDefault();
             } else {
-                combineFields();
+                errorMessage.style.display = 'none';
             }
         }
+        
+        // 4. 비번, 비번확인 일치 여부 "실시간" 확인
+        function checkPasswordMatch() {
+            const password = document.getElementById('u_pw').value;
+            const confirmPassword = document.getElementById('u_pwc').value;
+            const errorMessage = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('u_pwc').addEventListener('input', checkPasswordMatch);
+            document.getElementById('terms').addEventListener('change', toggleSubmitButton);
+            toggleSubmitButton(); // 초기 상태에서 버튼 비활성화 설정
+        });
     	
     </script>
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 	<form method="post" action="signup.do" target="_self" onsubmit="validateForm(event)">
         <div class="logo">
@@ -103,6 +155,7 @@
             <div class="mb-4">
                 <label for="u_pwc" class="block text-gray-700">비밀번호 확인</label>
                 <input type="password" id="u_pwc" name="u_pwc" placeholder="비밀번호를 다시 입력해주세요" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p id="passwordError" class="error-message">비밀번호가 일치하지 않습니다.</p>
             </div>
             <div class="mb-4">
                 <label for="u_nickname" class="block text-gray-700">이름</label>
@@ -116,7 +169,7 @@
                 <input type="checkbox" id="terms" class="mr-2" onchange="toggleSubmitButton()">
                 <label for="terms" class="text-gray-700 text-sm">회원가입과 동시에 개인정보취급방침 및 이용약관에 동의하게 됩니다.</label>
             </div>
-            <button type="submit" id="submitBtn" class="w-full bg-green-500 text-white py-2 rounded-lg" disabled>회원가입</button>
+            <button type="submit" id="submitBtn" class="w-full text-white py-2 rounded-lg disabled-button" disabled>회원가입</button>
         </div>
     </form>
 </body>
