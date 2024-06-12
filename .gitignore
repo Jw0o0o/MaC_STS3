@@ -11,11 +11,13 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-/target/
+.target/
 
-
-# Windows specific files
+# Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
 
 # External tool builders
 .externalToolBuilders/
@@ -61,6 +63,14 @@ Thumbs.db
 .cache-main
 .scala_dependencies
 .worksheet
+
+### Maven ###
+target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
 
 # Maven specific files
 log/
