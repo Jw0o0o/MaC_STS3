@@ -9,9 +9,8 @@ public class JDBCUtil {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			// 
+			// MySQL의 dsdt스키마에 연결, 아디, 비번
 			return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dsdt", "root", "mysql123");
-			
  
 		} catch (Exception e) {
 			e.printStackTrace();
