@@ -14,7 +14,7 @@ public class TestMySQLConnect_Table {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         // 데이터베이스 연결
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dsdt", "root", "1234")) {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dsdt", "root", "mysql123")) {
             System.out.println("Connection success");
 
             // Statement 생성

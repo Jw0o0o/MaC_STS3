@@ -15,7 +15,6 @@
         	<div id="logo">
         		<img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo">
         	</div>
-        	
             <div id="top_menu">
                 <a href="#">LOGIN</a> |
                 <a href="logout.do">LOGOUT</a>
@@ -31,10 +30,8 @@
                 </ul>
             </nav>
             
-        </header>     
-   
+        </header>        
     </div>
-
 
 	<section class="service">
 		<div class="container">
@@ -65,9 +62,6 @@
         </thead>
     	</table>
     </div>
-
-
-
 
 </body>
 </html>
