@@ -1,0 +1,93 @@
+### Eclipse ###
+.metadata
+.Servers
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+/target/
+
+
+# Windows specific files
+Thumbs.db
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# CDT- autotools
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Annotation Processing
+.apt_generated/
+.apt_generated_test/
+
+# Scala IDE specific (Scala & Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet
+
+# Maven specific files
+log/
+logs/
+*.log
+*.tmp
+*.swp
+*.bak
+*.swo
+
+# Gradle specific files
+.gradle/
+/build/
+!gradle-wrapper.jar
+
+# STS specific
+.springBeans
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*.bak
+
+# Package Files
+*.jar
+*.war
+*.ear
