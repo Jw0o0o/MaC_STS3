@@ -16,7 +16,6 @@ public interface UserService {
 	
 	public void deleteUser(UserVO vo);
 	
-	public boolean isUsernameTaken(UserVO vo);
 }
 
 

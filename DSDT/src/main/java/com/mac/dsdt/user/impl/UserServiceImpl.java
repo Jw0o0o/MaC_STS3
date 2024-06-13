@@ -39,10 +39,5 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(UserVO vo) {
 		userDAO.deleteUser(vo);
 	}
-	
-	@Override
-	public boolean isUsernameTaken(UserVO vo) {
-        return userDAO.existsByUsername(vo);
-    }
 
 }
