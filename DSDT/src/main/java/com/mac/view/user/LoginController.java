@@ -33,7 +33,7 @@ public class LoginController {
 /* 관리자 권한 관련 */
 //if (user != null) {
 //	session.setAttribute("userName", user.getU_name()); // SetAttribute: servlet API중 하나
-//	if (user.getU_id().equals("admin") && user.getU_pw().equals("admin123")) { // ==쓰면 false뜸
+//	if (user.getU_id().equals("admin") && user.getU_pwit ().equals("admin123")) { // ==쓰면 false뜸
 //		return "getUserList.do";
 //	}
 //	return "getBoardList.do";

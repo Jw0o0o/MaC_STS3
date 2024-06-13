@@ -11,6 +11,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #f2f6fc, #c7e3f0, #eae6f0);
         }
         .logo {
             text-align: center;
