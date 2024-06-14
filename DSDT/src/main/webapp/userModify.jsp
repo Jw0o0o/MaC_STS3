@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>userModifyCheck</title>
+<title>회원정보수정</title>
 </head>
 <body>
 

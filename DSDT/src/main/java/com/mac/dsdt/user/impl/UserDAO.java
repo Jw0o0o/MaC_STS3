@@ -206,7 +206,7 @@ public class UserDAO {
 
 		} finally {
 
-			JDBCUtil.close(stmt, conn);
+			JDBCUtil.close(rs, stmt, conn);
 		}
 		
 		System.out.println("사용자 정보가 삭제되었습니다. 탈퇴 처리가 완료되었습니다.");

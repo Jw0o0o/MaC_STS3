@@ -1,6 +1,8 @@
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse
+
 ### Eclipse ###
-/.metadata
-/Servers
+.metadata
 bin/
 tmp/
 *.tmp
@@ -11,13 +13,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.target/
-
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
 
 # External tool builders
 .externalToolBuilders/
@@ -64,40 +59,12 @@ ehthumbs_vista.db
 .scala_dependencies
 .worksheet
 
-### Maven ###
-target/
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
+# Uncomment this line if you wish to ignore the project description file.
+# Typically, this file would be tracked if it contains build/dependency configurations:
+#.project
 
-# Maven specific files
-log/
-logs/
-*.log
-*.tmp
-*.swp
-*.bak
-*.swo
+### Eclipse Patch ###
+# Spring Boot Tooling
+.sts4-cache/
 
-# Gradle specific files
-.gradle/
-/build/
-!gradle-wrapper.jar
-
-# STS specific
-.springBeans
-
-# Temporary files
-*.tmp
-*.temp
-*.log
-*.swp
-*.swo
-*.bak
-
-# Package Files
-*.jar
-*.war
-*.ear
+# End of https://www.toptal.com/developers/gitignore/api/eclipse
