@@ -115,9 +115,27 @@
                 errorMessage.style.display = 'none';
             }
         }
+        
+     	// 5. 이메일 형식 확인
+        function validateEmail() {
+            const email = document.getElementById('u_id').value;
+            console.log(email)
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+            if (!emailPattern.test(email)) {
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+
+     	// Final
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('u_pwc').addEventListener('input', checkPasswordMatch);
+            document.getElementById('u_id').addEventListener('input', validateEmail);
             document.getElementById('terms').addEventListener('change', toggleSubmitButton);
             toggleSubmitButton(); // 초기 상태에서 버튼 비활성화 설정
         });
@@ -144,9 +162,10 @@
             <div class="mb-4">
                 <label for="u_id" class="block text-gray-700">아이디</label>
                 <div class="flex">
-                    <input type="text" id="u_id" name="u_id" placeholder="ID를 입력해주세요" class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" id="u_id" name="u_id" placeholder="ID를 입력해주세요" class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <button type="button" name="idconfirm" class="px-4 py-2 bg-blue-500 text-white rounded-r-lg" onclick="checkDuplicateId()">중복체크</button>
                 </div>
+                <p id="emailError" class="error-message">유효한 이메일 형식을 입력해주세요.</p>
             </div>
             <div class="mb-4">
                 <label for="u_pw" class="block text-gray-700">비밀번호</label>

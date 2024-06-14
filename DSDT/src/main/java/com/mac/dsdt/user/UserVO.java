@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class UserVO {
 	
+	private String u_seq;
 	private String u_id;
 	private String u_pw;
 	private String u_pwc;
@@ -15,6 +16,13 @@ public class UserVO {
 	private String u_phone;
 	private Date u_createdat;
 
+	public String getU_seq() {
+		return u_seq;
+	}
+	public void setU_seq(String u_seq) {
+		this.u_seq = u_seq;
+	}
+	
 	public String getU_id() {
 		return u_id;
 	}
