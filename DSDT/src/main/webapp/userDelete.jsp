@@ -5,30 +5,65 @@
 <head>
 <meta charset="EUC-KR">
 <title>회원 탈퇴</title>
+<link href="bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        background-color: #f8f9fa;
+        color: #495057;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .form-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border: 2px solid #dee2e6;
+    }
+    h1 {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .form-control {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+        font-size: 1rem;
+    }
+    .btn-danger {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+</style>
 </head>
 <body>
-<center>
-		<form method="post" action="">
-			<table border="1" width="400">
-				<tr>
-					<th colspan="2">
-						<h1>회원탈퇴</h1>
-						<h5>본인확인을 위해 아이디와 비밀번호를 입력해주세요</h5>
-					</th>
-				</tr>
-				<tr>
-					<th>아&nbsp;이&nbsp;디</th>
-					<td><input type="text" name="u_id"></td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input type="text" name="u_pw"></td>
-				</tr>
-				<tr>
-					<th colspan="2"><input type="submit" value="제출하기"></th>
-				</tr>
-			</table>
-		</form>
-	</center>
+    <div class="container">
+        <div class="form-container">
+            <h1><img src="./resources/images/dsdtLogo2.png" width="50" height="50" border="0" alt="">회원 탈퇴</h1>
+            <form action="userDelete.jsp" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="비밀번호" required>
+                </div>
+                <button type="submit" class="btn btn-danger">탈퇴</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

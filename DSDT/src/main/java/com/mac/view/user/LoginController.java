@@ -21,7 +21,8 @@ public class LoginController {
 		
 		UserVO user = userService.getUser(vo);
 		if (user != null) {
-			// session.setAttribute("userName", user.getU_name()); // SetAttribute은 서블릿API중 하나
+			// 세션에 user정보 담기
+			session.setAttribute("seq", user.getU_seq()); // SetAttribute은 서블릿API중 하나
 			return "main.jsp";
 		} else {
 			return "login.jsp"; // 로그인 실패

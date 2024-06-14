@@ -58,7 +58,7 @@
     <div class="container mx-auto mt-8">
         <div class="board-header flex justify-between items-center p-4">
             <div>
-                <a href="#">의료</a>
+                <a href="dataSetMedical.jsp">의료</a>
                 <a href="#">날씨</a>
                 <a href="#">화성1</a>
                 <a href="#">화성2</a>
